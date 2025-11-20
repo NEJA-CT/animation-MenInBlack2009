@@ -3,11 +3,11 @@ import pyxel
 
 SPEED = 0.2
 GRAVITY = 0.3
-BOUNCE = 0.7
+BOUNCE = 1
 W, H = 160, 120
 
 # initial position and velocity
-x, y = W // 2, H // 2
+x, y = W // 10, H-10
 vx, vy = 0, 0
 
 def update():
@@ -17,12 +17,12 @@ def update():
    vy += GRAVITY
    y += vy
   
-   if x < 100 or x > 110:
+   if x <= 100 or x >= 120:
       vx += SPEED
       x += vx
    else:
        vx -= SPEED
-       x += vx
+       x += vx 
 
    # Bounce when hitting the ground
    ground = H - 5
@@ -39,11 +39,34 @@ def update():
       x = 3
       vx = -vx * BOUNCE
 
+   ceiling = 5
+   if y < ceiling:
+       y = ceiling
+       vy = -vy * BOUNCE
+
+
+
+   if pyxel.btnp(pyxel.KEY_W):
+      vy = -vy - 1
+   
+   if pyxel.btnp(pyxel.KEY_S):
+      vy = vy + 1
+
+   if pyxel.btnp(pyxel.KEY_A):
+      vx = -vx - 1
+      x += vx
+   if pyxel.btnp(pyxel.KEY_D):
+      vx = vx + 1
+      x += vx
+
+
+
+
+
+
 def draw():
    pyxel.cls(0)
    pyxel.circ(x, y, 9, 1)
-
-
 
 pyxel.init(W,H, title="fun")
 pyxel.run(update,draw)
