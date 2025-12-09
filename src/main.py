@@ -1,14 +1,17 @@
 import pyxel
 
+W, H = 160, 120
+
+
+# initial position and velocity
+x, y = W // 10, 15
+vx, vy = 0, 0
+
 
 SPEED = 0.2
 GRAVITY = 0.3
-BOUNCE = 1
-W, H = 160, 120
+BOUNCE = vx/2
 
-# initial position and velocity
-x, y = W // 10, H-10
-vx, vy = 0, 0
 
 def update():
    global x, y, vx, vy
@@ -17,12 +20,19 @@ def update():
    vy += GRAVITY
    y += vy
   
-   if x <= 100 or x >= 120:
+   if x <= 60:
       vx += SPEED
       x += vx
    else:
-       vx -= SPEED
-       x += vx 
+       vx += SPEED
+       x -= vx 
+
+   if y >= 60:
+       vy += SPEED
+       y += vy
+   else:
+       vy += SPEED
+       y -= vy
 
    # Bounce when hitting the ground
    ground = H - 5
@@ -53,7 +63,7 @@ def update():
       vy = vy + 1
 
    if pyxel.btnp(pyxel.KEY_A):
-      vx = -vx - 1
+      vx = -vx - 50
       x += vx
    if pyxel.btnp(pyxel.KEY_D):
       vx = vx + 1
