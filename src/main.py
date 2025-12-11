@@ -9,30 +9,18 @@ vx, vy = 0, 0
 
 
 SPEED = 0.2
-GRAVITY = 0.3
-BOUNCE = vx/2
+GRAVITY = 0.1
+BOUNCE = 0.5
 
 
 def update():
    global x, y, vx, vy
 
-   # Apply gravity
    vy += GRAVITY
-   y += vy
-  
-   if x <= 60:
-      vx += SPEED
-      x += vx
-   else:
-       vx += SPEED
-       x -= vx 
 
-   if y >= 60:
-       vy += SPEED
-       y += vy
-   else:
-       vy += SPEED
-       y -= vy
+   x += vx
+
+   y += vy
 
    # Bounce when hitting the ground
    ground = H - 5
@@ -57,16 +45,18 @@ def update():
 
 
    if pyxel.btnp(pyxel.KEY_W):
-      vy = -vy - 1
-   
+      vy = vy - 10
+      y += vy
+
    if pyxel.btnp(pyxel.KEY_S):
-      vy = vy + 1
+      vy = vy + 5
+      y += vy
 
    if pyxel.btnp(pyxel.KEY_A):
-      vx = -vx - 50
+      vx = vx - 10
       x += vx
    if pyxel.btnp(pyxel.KEY_D):
-      vx = vx + 1
+      vx = vx + 5
       x += vx
 
 
