@@ -45,7 +45,7 @@ def update():
 
 
    if pyxel.btnp(pyxel.KEY_W):
-      vy = vy - 10
+      vy = vy - 5
       y += vy
 
    if pyxel.btnp(pyxel.KEY_S):
@@ -53,7 +53,7 @@ def update():
       y += vy
 
    if pyxel.btnp(pyxel.KEY_A):
-      vx = vx - 10
+      vx = vx - 5
       x += vx
    if pyxel.btnp(pyxel.KEY_D):
       vx = vx + 5
