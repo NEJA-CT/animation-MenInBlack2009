@@ -9,7 +9,7 @@ vx, vy = 0, 0
 
 
 SPEED = 0.2
-GRAVITY = 0.1
+GRAVITY = 0.3
 BOUNCE = 0.5
 
 
@@ -59,7 +59,20 @@ def update():
       vx = vx + 5
       x += vx
 
+   if pyxel.btnp(pyxel.KEY_UP):
+      vy = vy - 5
+      y += vy
 
+   if pyxel.btnp(pyxel.KEY_DOWN):
+      vy = vy + 5
+      y += vy
+
+   if pyxel.btnp(pyxel.KEY_LEFT):
+      vx = vx - 5
+      x += vx
+   if pyxel.btnp(pyxel.KEY_RIGHT):
+      vx = vx + 5
+      x += vx
 
 
 
